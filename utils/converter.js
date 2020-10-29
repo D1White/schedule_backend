@@ -4,6 +4,11 @@ const { faunadb, client } = require('../core/db');
 const { Ref, Collection, Update, Create } = faunadb.query;
 
 let data = {
+  info: {
+    date: '',
+    time: '',
+    fullDate: '',
+  },
   schedule: {
     mon: [],
     tue: [],
@@ -11,10 +16,6 @@ let data = {
     thu: [],
     fri: [],
   },
-  info: {
-    date: '',
-    time: '',
-  }
 }
 
 
@@ -83,6 +84,7 @@ const Converter = (fileName) => {
 
   data.info.date = date.toString().slice(4, 15);
   data.info.time = date.toString().slice(16, 24);
+  data.info.fullDate = date.toString();
 
   client.query(
       Create(Collection("schedule"),
