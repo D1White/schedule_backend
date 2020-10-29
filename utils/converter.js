@@ -8,6 +8,7 @@ let data = {
     date: '',
     time: '',
     fullDate: '',
+    build: ''
   },
   schedule: {
     mon: [],
@@ -17,7 +18,6 @@ let data = {
     fri: [],
   },
 }
-
 
 
 const regex = /\s{2}.+/g;
@@ -86,13 +86,19 @@ const Converter = (fileName) => {
   data.info.time = date.toString().slice(16, 24);
   data.info.fullDate = date.toString();
 
+  if (process.env.PORT === 3001) {
+    data.info.build = 'local';
+  }else {
+    data.info.build = 'heroku';
+  }
+
   client.query(
       Create(Collection("schedule"),
         { data: data}
       )
   )
 
-    console.log('✅ Data converted!');
+  console.log('✅ Data converted!');
 
   // return data;
   // console.log(data);
