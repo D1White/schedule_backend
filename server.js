@@ -15,10 +15,9 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send("Shalom")
+  res.send("It's live")
 })
 
-// app.get('/ipz32', GroupCtrl.index);
 app.get('/ipz32', GroupCtrl.index);
 app.get('/url', GroupCtrl.downloadUrl);
 app.patch('/ipz32', GroupCtrl.update);

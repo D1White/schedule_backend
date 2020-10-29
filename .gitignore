@@ -6,4 +6,5 @@
 .env
 .faunarc
 /utils/OLDCODECONVERTER.js
-/download
+/download/schedule7.xlsx
+/download/schedule8.xlsx

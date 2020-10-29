@@ -14,6 +14,8 @@ const downloadTable = (url) => {
       let scheduleNum = url.match(pattern3);
       scheduleNum = parseInt(scheduleNum[0].slice(0, 1));
       const dest = `download/schedule${scheduleNum}.xlsx`;
+      // const dest = path.join(__dirname, 'download', `schedule${scheduleNum}.xlsx`);
+      // console.log(dest);
 
       const file = fs.createWriteStream(dest);
 
