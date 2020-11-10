@@ -2,8 +2,6 @@ const express = require("express");
 const { faunadb, client } = require('../core/db');
 
 const { urlParser } = require("../utils/urlParser");
-const { Converter } = require("../utils/converter");
-
 
 const { Get, Ref, Collection, Update, Map, Paginate, Index, Lambda, Match } = faunadb.query;
 

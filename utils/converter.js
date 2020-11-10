@@ -86,7 +86,7 @@ const Converter = (fileName) => {
   data.info.time = date.toString().slice(16, 24);
   data.info.fullDate = date.toString();
 
-  if (process.env.PORT === 3001) {
+  if (process.env.PORT === '3001') {
     data.info.build = 'local';
   }else {
     data.info.build = 'heroku';

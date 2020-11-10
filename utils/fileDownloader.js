@@ -1,21 +1,17 @@
 const http = require("http");
 const fs = require("fs");
-const { faunadb, client } = require('../core/db');
-
-const { Get, Ref, Collection } = faunadb.query;
 
 const pattern3 = /\d.xlsx/g;
+const pattern4 = /\/\d{1,2}\//g; //http://omc.univ.kiev.ua/wp-content/uploads/2020/11/Розклад-3-курс.xlsx
 
 
 const downloadTable = (url) => {
 
     if (url) {
       console.log('Start file download...');
-      let scheduleNum = url.match(pattern3);
-      scheduleNum = parseInt(scheduleNum[0].slice(0, 1));
+      let scheduleNum = url.match(pattern4);
+      scheduleNum = parseInt(scheduleNum[0].slice(1, 3));
       const dest = `download/schedule${scheduleNum}.xlsx`;
-      // const dest = path.join(__dirname, 'download', `schedule${scheduleNum}.xlsx`);
-      // console.log(dest);
 
       const file = fs.createWriteStream(dest);
 
@@ -42,8 +38,6 @@ const downloadTable = (url) => {
     }else {
       console.log(`🛑 File don't download`);
     }
-
-  // })
 
 };
 

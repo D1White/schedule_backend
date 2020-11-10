@@ -23,8 +23,8 @@ const urlParser = () => {
         console.log('✅ Url Parsed!');
         downloadTable(result[0]).then(() => {
 
-          let scheduleNum = result[0].match(/\d.xlsx/g);
-          scheduleNum = parseInt(scheduleNum[0].slice(0, 1));
+          let scheduleNum = result[0].match(/\/\d{1,2}\//g);
+          scheduleNum = parseInt(scheduleNum[0].slice(1, 3));
           
           Converter(`download/schedule${scheduleNum}.xlsx`);
 
