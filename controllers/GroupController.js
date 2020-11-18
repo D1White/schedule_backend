@@ -9,11 +9,6 @@ class GroupController {
   async index(_, res) {
     try {
 
-      // const doc = await client.query(
-      //   Get(
-      //     Ref(Collection("schedule"), "280711444225327623")
-      //   )
-      // )
       const doc = await client.query(
         Map(
           Paginate(Match(Index('allRef'))),
@@ -23,10 +18,6 @@ class GroupController {
 
       res.send(doc.data[doc.data.length - 1]);
 
-      // res.json({
-      //   status: "succes",
-      //   data: doc.data[doc.data.length - 1],
-      // });
     } catch (error) {
       res.status(500).json({
         status: "error",
@@ -34,6 +25,54 @@ class GroupController {
       });
     }
   }
+
+  async show(req, res) {
+    try {
+      const taskId = req.params.id;
+
+      const doc = await client.query(
+        Map(
+          Paginate(Match(Index('allRef'))),
+          Lambda((ref, ts) => Get(ref))
+          )
+      )
+
+      const schedule = doc.data[doc.data.length - 1].data.schedule;
+
+      if (!schedule) {
+        res.status(404).send();
+        return;
+      }
+
+      switch (parseInt(taskId)) {
+        case 1:
+          res.send(schedule.mon);
+          break;
+        case 2:
+          res.send(schedule.tue);
+          break;
+        case 3:
+          res.send(schedule.wed);
+          break;
+        case 4:
+          res.send(schedule.thu);
+          break;
+        case 5:
+          res.send(schedule.fri);
+          break;
+        default:
+          res.status(404).send();
+          break;
+      }
+
+    } catch (error) {
+      res.status(500).json({
+        status: "error",
+        message: error,
+      });
+    }
+  }
+
   async update(_, res) {
     try {
       
@@ -49,6 +88,7 @@ class GroupController {
       });
     }
   }
+
   async downloadUrl(_, res) {
     try {
 
@@ -60,10 +100,6 @@ class GroupController {
 
       res.send(doc);
 
-      // res.json({
-      //   status: "succes",
-      //   data: [],
-      // });
     } catch (error) {
       res.status(500).json({
         status: "error",

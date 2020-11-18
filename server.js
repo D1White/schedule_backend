@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/ipz32', GroupCtrl.index);
+app.get('/ipz32/:id', GroupCtrl.show);
 app.get('/url', GroupCtrl.downloadUrl);
 app.patch('/ipz32', GroupCtrl.update);
 
