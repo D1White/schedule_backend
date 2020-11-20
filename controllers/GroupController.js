@@ -11,7 +11,7 @@ class GroupController {
 
       const doc = await client.query(
         Map(
-          Paginate(Match(Index('allRef'))),
+          Paginate(Match(Index('allShedule'))),
           Lambda((ref, ts) => Get(ref))
           )
       )
@@ -32,7 +32,7 @@ class GroupController {
 
       const doc = await client.query(
         Map(
-          Paginate(Match(Index('allRef'))),
+          Paginate(Match(Index('allShedule'))),
           Lambda((ref, ts) => Get(ref))
           )
       )
