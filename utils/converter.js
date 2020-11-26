@@ -70,15 +70,15 @@ const Converter = (fileName) => {
   const worksheet = workbook.Sheets['Лист1'];
 
   //Monday
-  bruteForce(7, 11, 1, worksheet);
+  bruteForce(8, 12, 1, worksheet);
   //Tue
-  bruteForce(11, 15, 2, worksheet);
+  bruteForce(12, 16, 2, worksheet);
   //Wed
-  bruteForce(15, 19, 3, worksheet);
+  bruteForce(16, 20, 3, worksheet);
   //Thu
-  bruteForce(19, 23, 4, worksheet);
+  bruteForce(20, 24, 4, worksheet);
   //Fri
-  bruteForce(23, 27, 5, worksheet);
+  bruteForce(24, 28, 5, worksheet);
 
   const date = new Date();
 
